@@ -1,5 +1,5 @@
 if exists("b:current_syntax")
-	finish
+  finish
 endif
 
 highlight TodoRed ctermfg=red
@@ -21,29 +21,29 @@ highlight link TodoDateToday TodoRed
 
 let s:dayTomorrow = strftime("%d") + 1
 if len(s:dayTomorrow) == 1
-    let s:dayTomorrow = "0" . s:dayTomorrow
+  let s:dayTomorrow = "0" . s:dayTomorrow
 endif
 let s:tomorrow = "'\\[" . s:dayTomorrow . strftime("\\-%m\\-%Y") . "\\]'"
 exec "syntax match TodoDateTomorrow " . s:tomorrow
 highlight link TodoDateTomorrow TodoBlue
 
 function! s:ConvertToCharClass(cur) 
-    if a:cur =~ '[2-9]'
-        return '[0-' . (a:cur-1) . ']'
-    endif
-    return '0'
+  if a:cur =~ '[2-9]'
+    return '[0-' . (a:cur-1) . ']'
+  endif
+  return '0'
 endfunction
 
 function! s:MatchNumberBefore(num)
-    let branches = []
-    let init = ''
-    for i in range(len(a:num))
-        if a:num[i] =~ '[1-9]'
-            call add(branches, init . s:ConvertToCharClass(a:num[i]) . repeat('\d', len(a:num) - i - 1))
-        endif 
-        let init .= a:num[i]
-    endfor
-    return '\%(' . join(branches, '\|') .'\)'
+  let branches = []
+  let init = ''
+  for i in range(len(a:num))
+    if a:num[i] =~ '[1-9]'
+      call add(branches, init . s:ConvertToCharClass(a:num[i]) . repeat('\d', len(a:num) - i - 1))
+    endif
+    let init .= a:num[i]
+  endfor
+  return '\%(' . join(branches, '\|') .'\)'
 endfunction
 
 let s:beforeYear = s:MatchNumberBefore(strftime("%Y"))
@@ -58,3 +58,5 @@ exec "syntax match TodoDatePast \"\\[" . s:beforeDay . "-" . s:month . "-" . s:y
 highlight link TodoDatePast TodoRed
 
 let b:current_syntax = "todo"
+
+" vim: nowrap sw=2 sts=2 ts=8 noet:
