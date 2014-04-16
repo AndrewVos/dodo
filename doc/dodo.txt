@@ -1,0 +1,49 @@
+*dodo.txt* Make those to-do list tasks extinct?
+*dodo*
+
+==============================================================================
+CONTENTS                                                         *dodo-contents*
+
+    1.Intro...................................|dodo-intro|
+    2.File format.............................|dodo-file-format|
+    3.Abbreviations...........................|dodo-abbreviations|
+    4.Features................................|dodo-features|
+
+==============================================================================
+1. Intro                                                            *dodo-intro*
+
+Dodo is a to-do list sort of plugin that has a few useful features that make
+to-do list editing a little better.
+
+==============================================================================
+
+2. File format                                                *dodo-file-format*
+
+    A dodo file is a file with the .dodo extension.
+
+    Incomplete tasks:
+        [o] Do some things?
+            [o] Some nested thing?
+    Complete tasks:
+        [x] Yay I did this.
+        [x] This too.
+    Tasks with dates:
+        [x] [31-01-2014] Do some sort of thing
+
+==============================================================================
+
+3. Abbreviations                                            *dodo-abbreviations*
+
+    In insert mode, type di<space> or dc<space> to insert an incomplete or 
+    complete item.
+
+==============================================================================
+
+4. Features                                                      *dodo-features*
+    Dodo will populate your location list automatically. Use :lnext and
+    :lprevious to go to the next or previous incomplete item. If you're using
+    vim-unimpaired then just press [l or ]l.
+
+==============================================================================
+
+vim:tw=78:sw=4:ft=help:norl:
