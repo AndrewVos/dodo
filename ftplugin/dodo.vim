@@ -5,7 +5,7 @@ else
 endif
 
 function! s:UpdateLocationList()
-  silent lvim /\[o\]/j %
+  silent! lvim /\[o\]/j %
 endfunction
 
 call s:UpdateLocationList()
