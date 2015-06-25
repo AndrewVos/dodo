@@ -41,4 +41,17 @@ nnoremap <silent> <buffer> dc :<c-u>call <SID>ToggleComplete()<cr>
 iabbrev <buffer> di [o]
 iabbrev <buffer> dc [o]
 
+function GetDodoFold(lineNumber)
+    let line = getline(a:lineNumber)
+    if line =~ '\v\\[(x|o)'
+      return '>1'
+    elseif line =~ '\v^\s*$'
+      return '<1'
+    else
+      return 1
+    endif
+endfunction
+setlocal foldmethod=expr
+setlocal foldexpr=GetDodoFold(v:lnum)
+
 " vim: nowrap sw=2 sts=2 ts=8 noet:
